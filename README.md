@@ -1,41 +1,42 @@
 # 📘 Automative Teaching Using RAG
 
-This repository showcases our capstone project: a Retrieval-Augmented Generation (RAG)-based academic question-answering system that evaluates how different LLMs perform on course-specific queries. The project is implemented using FAISS, Sentence-Transformers, and Hugging Face models.
+This repository contains the evaluation notebook for our capstone project:  
+**"Automatic Teaching via Vision Language Retrieval Augmented Generation."**
 
-🔗 [Colab Notebook (RAG Matrix Evaluation)](https://colab.research.google.com/drive/1cllFgi0dszfPW1dU2tq8VZfhqFfSQgfC?pli=1)
+The goal of this work is to compare how different language models—specifically FLAN-T5, BART-Large, and a Hybrid Retriever—perform on academic question answering when grounded in course content.
+
+🔗 **Run the notebook here →**  
+[Colab Link: RAG_Evaluation_Colab.ipynb](https://colab.research.google.com/drive/1cllFgi0dszfPW1dU2tq8VZfhqFfSQgfC?pli=1)
 
 ---
 
-## 📌 Features
+## 🧪 Notebook Features
 
-- Embedding generation using `all-MiniLM-L6-v2`
-- Semantic retrieval using FAISS
-- Answer generation using:
+- Loads structured academic Q&A dataset  
+- Generates context-aware answers using:
   - `google/flan-t5-base`
   - `facebook/bart-large`
-- Model comparison using:
-  - BLEU
-  - ROUGE (1, 2, L)
-  - METEOR
-  - F1 Score
-  - Cosine Similarity
-  - CIDEr
+  - Hybrid retrieval (non-generative baseline)  
+- Computes and compares results across metrics:
+  - **BLEU**, **ROUGE**, **F1 Score**
+  - **METEOR**, **Cosine Similarity**, **CIDEr**, **Exact Match**
 
 ---
 
-## 📂 Folder Structure
+## 📊 Sample Output
 
-- `data/`: Sample cleaned dataset with course transcripts
-- `src/`: Modular scripts (retrieval, generation, evaluation)
-- `results/`: Output evaluation matrix (CSV)
-- `RAG_Evaluation_Colab.ipynb`: Main notebook demonstrating model performance
+| Model           | BLEU | ROUGE-1 | F1 Score | Cosine Sim |
+|------------------|------|---------|----------|------------|
+| FLAN-T5          | 0.000 | 0.0364 | 0.0476   | 0.2403     |
+| BART-Large       | 0.0038| 0.2329 | 0.2105   | 0.4555     |
+| Hybrid-Retriever | 0.0035| 0.1333 | 0.1017   | 0.3497     |
 
 ---
 
-## 🛠 Requirements
+## 📦 Dependencies
 
-Install the required packages:
+You can run this notebook in Colab without any local setup.  
+If running locally, install:
 
 ```bash
-pip install -r requirements.txt
-
+pip install pandas numpy torch sentence-transformers transformers nltk rouge-score scikit-learn
